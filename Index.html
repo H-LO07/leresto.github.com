@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Mobile</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-4 text-center text-blue-600">Paiement Mobile</h1>
+        <p class="mb-4 text-center text-gray-700">PAYEZ AVEC ORANGE MONEY, AIRTEL MONEY, M-PESA et AFRIMONEY EN TAPANT LA SYNTAXE APPROPRIEE</p>
+        <button id="payButton" class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300">PAYER</button>
+        
+        <div id="inputArea" class="mt-4 hidden">
+            <input type="tel" id="paymentInput" class="w-full mb-4 p-2 border rounded" placeholder="Entrez le code de paiement" inputmode="numeric">
+            <div class="flex justify-between">
+                <button id="clearButton" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300">Effacer</button>
+                <button id="submitButton" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">Soumettre</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const payButton = document.getElementById('payButton');
+        const inputArea = document.getElementById('inputArea');
+        const paymentInput = document.getElementById('paymentInput');
+        const clearButton = document.getElementById('clearButton');
+        const submitButton = document.getElementById('submitButton');
+
+        payButton.addEventListener('click', () => {
+            inputArea.classList.remove('hidden');
+            paymentInput.focus();
+        });
+
+        clearButton.addEventListener('click', () => {
+            paymentInput.value = '';
+            paymentInput.focus();
+        });
+
+        submitButton.addEventListener('click', () => {
+            alert('Paiement soumis : ' + paymentInput.value);
+            paymentInput.value = '';
+            inputArea.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
